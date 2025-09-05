@@ -84,11 +84,16 @@ const ApodViewer = () => {
       <div className="container mx-auto px-6 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 nebula-gradient bg-clip-text text-transparent animate-glow">
-            NASA APOD
+          <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tight">
+            <span className="nebula-gradient bg-clip-text text-transparent animate-glow">
+              COSMOS
+            </span>
+            <span className="block text-2xl md:text-3xl font-light text-muted-foreground mt-2 tracking-widest">
+              DAILY
+            </span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-2">
-            Astronomy Picture of the Day
+          <p className="text-lg md:text-xl text-muted-foreground mb-2 font-light tracking-wide">
+            Discover the universe, one image at a time
           </p>
           <p className="text-lg text-primary font-medium">
             {formatDate(apodData.date)}
