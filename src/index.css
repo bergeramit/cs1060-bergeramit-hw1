@@ -2,41 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Cosmic Design System - All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Cosmic Color Palette */
+    --background: 240 15% 8%;
+    --foreground: 240 10% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 240 12% 12%;
+    --card-foreground: 240 8% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 12% 10%;
+    --popover-foreground: 240 8% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 250 100% 75%;
+    --primary-foreground: 240 15% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 280 30% 25%;
+    --secondary-foreground: 240 8% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 10% 20%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 290 100% 65%;
+    --accent-foreground: 240 15% 8%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 240 10% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 8% 25%;
+    --input: 240 8% 20%;
+    --ring: 250 100% 75%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Cosmic Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(240 15% 8%) 0%, hsl(250 25% 15%) 50%, hsl(280 30% 12%) 100%);
+    --gradient-nebula: linear-gradient(45deg, hsl(250 100% 75%) 0%, hsl(280 80% 60%) 50%, hsl(310 90% 70%) 100%);
+    --gradient-aurora: linear-gradient(90deg, hsl(180 100% 50%) 0%, hsl(200 100% 60%) 25%, hsl(250 100% 75%) 50%, hsl(280 80% 60%) 75%, hsl(300 90% 70%) 100%);
+    
+    /* Cosmic Shadows */
+    --shadow-cosmic: 0 10px 40px -15px hsl(250 100% 75% / 0.3);
+    --shadow-glow: 0 0 30px hsl(250 100% 75% / 0.4);
+    --shadow-nebula: 0 0 50px hsl(280 80% 60% / 0.3);
+
+    /* Animations */
+    --transition-cosmic: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --animation-float: float 6s ease-in-out infinite;
+    --animation-glow: glow 2s ease-in-out infinite alternate;
 
     --sidebar-background: 0 0% 98%;
 
@@ -92,6 +108,8 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Remove dark mode overrides for cosmic theme */
 }
 
 @layer base {
@@ -101,5 +119,80 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-cosmic);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Cosmic Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      box-shadow: var(--shadow-glow);
+    }
+    100% {
+      box-shadow: var(--shadow-nebula);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Cosmic Utilities */
+  .cosmic-gradient {
+    background: var(--gradient-cosmic);
+  }
+
+  .nebula-gradient {
+    background: var(--gradient-nebula);
+  }
+
+  .aurora-gradient {
+    background: var(--gradient-aurora);
+  }
+
+  .cosmic-shadow {
+    box-shadow: var(--shadow-cosmic);
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .nebula-glow {
+    box-shadow: var(--shadow-nebula);
+  }
+
+  .float-animation {
+    animation: var(--animation-float);
+  }
+
+  .glow-animation {
+    animation: var(--animation-glow);
+  }
+
+  .cosmic-transition {
+    transition: var(--transition-cosmic);
+  }
+
+  .shimmer-effect {
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
   }
 }
