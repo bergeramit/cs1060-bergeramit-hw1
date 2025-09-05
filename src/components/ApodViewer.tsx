@@ -51,14 +51,14 @@ const ApodViewer = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen cosmic-gradient flex flex-col items-center justify-center p-6">
+      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6">
         <div className="w-full max-w-4xl mx-auto space-y-8">
-          <Skeleton className="h-12 w-3/4 mx-auto bg-muted/20" />
-          <Skeleton className="h-96 w-full bg-muted/20" />
+          <Skeleton className="h-12 w-3/4 mx-auto bg-slate-800" />
+          <Skeleton className="h-96 w-full bg-slate-800" />
           <div className="space-y-4">
-            <Skeleton className="h-4 w-full bg-muted/20" />
-            <Skeleton className="h-4 w-5/6 bg-muted/20" />
-            <Skeleton className="h-4 w-4/6 bg-muted/20" />
+            <Skeleton className="h-4 w-full bg-slate-800" />
+            <Skeleton className="h-4 w-5/6 bg-slate-800" />
+            <Skeleton className="h-4 w-4/6 bg-slate-800" />
           </div>
         </div>
       </div>
@@ -67,9 +67,9 @@ const ApodViewer = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen cosmic-gradient flex items-center justify-center p-6">
-        <Alert className="max-w-md mx-auto border-destructive/50 bg-card/50 backdrop-blur-sm">
-          <AlertDescription className="text-destructive">
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6">
+        <Alert className="max-w-md mx-auto border-red-500 bg-slate-900">
+          <AlertDescription className="text-red-400">
             {error}
           </AlertDescription>
         </Alert>
@@ -80,36 +80,36 @@ const ApodViewer = () => {
   if (!apodData) return null;
 
   return (
-    <div className="min-h-screen cosmic-gradient">
-      <div className="container mx-auto px-6 py-12">
+    <div className="min-h-screen bg-slate-950">
+      <div className="container mx-auto px-6 py-16">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tight">
-            <span className="nebula-gradient bg-clip-text text-transparent animate-glow">
+        <div className="text-center mb-20">
+          <h1 className="text-7xl md:text-9xl font-black mb-6 tracking-tight">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
               COSMOS
             </span>
-            <span className="block text-2xl md:text-3xl font-light text-muted-foreground mt-2 tracking-widest">
+            <span className="block text-3xl md:text-4xl font-light text-slate-400 mt-4 tracking-widest">
               DAILY
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-2 font-light tracking-wide">
+          <p className="text-xl md:text-2xl text-slate-300 mb-4 font-light tracking-wide">
             Discover the universe, one image at a time
           </p>
-          <p className="text-lg text-primary font-medium">
+          <p className="text-xl text-blue-400 font-medium">
             {formatDate(apodData.date)}
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Image Section */}
-          <Card className="mb-12 overflow-hidden border-border/20 bg-card/30 backdrop-blur-sm cosmic-shadow">
-            <div className="relative group">
+          <div className="mb-16 overflow-hidden rounded-2xl">
+            <div className="relative group bg-slate-900">
               {apodData.media_type === 'image' ? (
                 <img
                   src={apodData.hdurl || apodData.url}
                   alt={apodData.title}
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-102"
                   loading="lazy"
                 />
               ) : apodData.media_type === 'video' ? (
@@ -122,38 +122,38 @@ const ApodViewer = () => {
                   />
                 </div>
               ) : (
-                <div className="p-8 text-center">
-                  <p className="text-muted-foreground">
+                <div className="p-12 text-center">
+                  <p className="text-slate-400">
                     Media type not supported: {apodData.media_type}
                   </p>
                 </div>
               )}
               
               {/* Floating Title Overlay */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent p-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/95 to-transparent p-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-white">
                   {apodData.title}
                 </h2>
               </div>
             </div>
-          </Card>
+          </div>
 
           {/* Description Section */}
-          <Card className="border-border/20 bg-card/30 backdrop-blur-sm cosmic-shadow">
-            <div className="p-8">
-              <h3 className="text-xl font-semibold mb-6 text-primary">
+          <div className="bg-slate-900 rounded-2xl p-12">
+            <div>
+              <h3 className="text-2xl font-semibold mb-8 text-blue-400">
                 About Today's Image
               </h3>
-              <p className="text-foreground/90 leading-relaxed text-lg">
+              <p className="text-slate-200 leading-relaxed text-xl">
                 {apodData.explanation}
               </p>
             </div>
-          </Card>
+          </div>
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-12 pt-8 border-t border-border/20">
-          <p className="text-muted-foreground text-sm">
+        <div className="text-center mt-20 pt-12 border-t border-slate-800">
+          <p className="text-slate-400 text-base">
             Powered by NASA's Astronomy Picture of the Day API
           </p>
         </div>
