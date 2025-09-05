@@ -1,10 +1,13 @@
 Submission File:
 
 Netlify URL: https://melodious-tanuki-6f1bc2.netlify.app/
+
 Bolt URL: https://bergeramit-cs1060-be-4csl.bolt.host/
+
 Github Repo: https://github.com/bergeramit/cs1060-bergeramit-hw1
 
 Author Name: Amit Berger
+
 Author Email: aberger@mba2026.hbs.edu
 
 I worked on building a Astronomy Picture Of the Day (APOD) using NASA's public API.
